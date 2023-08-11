@@ -1,3 +1,42 @@
 body {
-  background-color: aquamarine;
+  background:url("https://i.pinimg.com/originals/50/ce/fc/50cefc2122adfae92d31df3c13b83244.jpg");
+}
+h1{
+  color: white;
+  text-align: center;
+}
+a {
+  text-decoration: none;
+}
+input {
+  width: 95%;
+  margin-top: 4px;
+  padding: 15px;    
+  border: 2px solid #493f3f;
+  border-radius: 15px;
+  vertical-align: center;
+}
+.botao {
+  width: 104%;
+  margin-top: 4px;
+  padding: 15px;    
+  border: 2px solid #493f3f;
+  border-radius: 15px;
+  vertical-align: center;
+}
+.form {
+  width: 400px;
+  background-color: rgb(30, 26, 26);
+  position: absolute;
+  top: 100px;
+  align-items: center;
+  vertical-align: center;
+  padding: 18px 6% 60px 6%;
+  margin: 0 0 35px 0;
+  margin-left: 620px;
+  border: 1px solid rgba(147, 184, 189,0.8);
+}
+p {
+  color: white;
+  text-align: center;
 }
