@@ -10,12 +10,12 @@
 <body>
   <div class="login-page">
     <div class="form">
-      <form method="post" action="/logar" class="login-form">
+      <form method="post" action="/usuarios/cadastrar" class="login-form">
         <h1>Cadastro</h1>
         <input type="text" name="usuario" placeholder="Digite seu E-mail"/>
         <input type="password" name="senha" placeholder="Digite uma senha"/>
-        <input type="password" name="senha" placeholder="Confirme sua senha"/>
-        <input type="submit" value="Cadastrar" class="botao"/>
+        <input type="password" name="senhadois" placeholder="Confirme sua senha"/>
+        <input type="submit" value="Cadastrar" class="botao" action="/usuarios/cadastrar"/>
         <p class="message">Ja é registrado? <a href="#">Faça seu login!</a></p>
       </form>
     </div>

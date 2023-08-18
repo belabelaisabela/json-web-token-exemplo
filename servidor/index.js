@@ -29,7 +29,17 @@ app.use(
 );
 
 app.get('/usuarios/cadastrar', async function(req, res){
-  res.render('cadastrar');
+  res.render('usuarios/cadastrar');
+  
+})
+
+app.post('/usuarios/cadastrar', async function(req, res){
+  if(req.body.senha === req.body.senhadois)
+  res.json({mensagem: "Cadastro realizado!"})
+else(
+  res.json({mensagem: "Senhas não são iguais!"})
+)
+  
 })
 
 app.get('/autenticar', async function(req, res){
