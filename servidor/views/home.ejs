@@ -8,9 +8,9 @@
 </head>
 <body>
   <% usuarios.forEach((usuario) => { %>
-    <%= usuario.nome %>
-    <%= usuario.senha %>
-  <% }) %>
+    <H1><%= usuario.nome %></H1>
+    <P><%= usuario.senha %></P>
+  <% }) %><br/>
   <form action="/deslogar" method="post">
     <input type="submit" value="Deslogar">
   </form>

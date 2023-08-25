@@ -33,8 +33,6 @@ app.get('/usuarios/cadastrar', async function(req, res){
   
 })
 
-
-
 app.post('/usuarios/cadastrar', async function(req, res){
   try {
     if(req.body.senha == req.body.senhadois){
@@ -45,14 +43,6 @@ app.post('/usuarios/cadastrar', async function(req, res){
     console.error(err);
     res.status(500).json({ mensagem: 'As senhas não são iguais!✧' });
 }
-})
-
-app.get('/autenticar', async function(req, res){
-  res.render('autenticar');
-})
-
-app.get('/', async function(req, res){
-  res.render("home")
 })
 
 app.post('/logar', (req, res) => {
@@ -78,10 +68,7 @@ app.post('/deslogar', function(req, res) {
   res.json({
     deslogado:true
   })
-
-
 })
-
 
 app.get('/usuarios/listar', async function(req, res){
   try {
