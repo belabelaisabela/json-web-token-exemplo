@@ -4,15 +4,16 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/style.css">
   <title>Document</title>
 </head>
 <body>
   <% banco.forEach((usuario) => { %>
-    <H1><%= usuario.nome %></H1>
-    <P><%= usuario.senha %></P>
+    <h1 class="listar"><%= usuario.nome %></h1>
+    <p class="listar"><%= usuario.senha %></p>
   <% }) %><br/>
-  <form action="/deslogar" method="post">
-    <input type="submit" value="Deslogar">
+  <form class="botao2" action="/deslogar" method="post">
+    <input class="botao2" type="submit" value="Deslogar">
   </form>
 </body>
 </html>
