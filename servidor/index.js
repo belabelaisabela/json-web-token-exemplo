@@ -50,7 +50,7 @@ app.post('/usuarios/cadastrar', async function(req, res){
     }
 } catch (err) {
     console.error(err);
-    res.status(500).json({ mensagem: 'As senhas não são iguais!✧' });
+    res.status(500).json({ mensagem: 'As senhas não são iguais!' });
 }
 })
 
