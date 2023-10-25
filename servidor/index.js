@@ -54,22 +54,20 @@ app.post('/usuarios/cadastrar', async function(req, res){
 }
 })
 
-app.post('/logar', (req, res) => {
-  if(req.body.usuario == "isabela" && req.body.senha == "1234"){
+app.post('/logar', async (req, res) => {
+  const u = await usuario.findOne({ where: { nome: req.body.nome, senha: crypto.encrypt(req.body.senha) } });
+  if(u) {
     const id = 1;
-
     const token = jwt.sign({ id }, process.env.SECRET, {
       expiresIn: 300
     })
-
-    res.cookie('token', token, {httpOnly: true});
+    res.cookie('token', token, {httpOnly:true});
     return res.json({
       usuario: req.body.usuario,
       token: token
     })
-  } 
-
-  res.status(500).json({ mensagem: "Login Inválido "})
+  }
+   res.status(500).json({ mensagem: "Login Inválido "})
 })
 
 app.post('/deslogar', function(req, res) {
