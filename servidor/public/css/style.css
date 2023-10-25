@@ -28,13 +28,12 @@ input {
 .form {
   width: 400px;
   background-color: rgb(30, 26, 26);
-  position: absolute;
-  top: 200px;
+  margin-top: 200px;
   align-items: center;
   vertical-align: center;
   padding: 18px 6% 60px 6%;
-  margin: 0 0 35px 0;
-  margin-left: 620px;
+  margin-left: auto;
+  margin-right: auto;
   border: 1px solid rgba(147, 184, 189,0.8);
   box-shadow: 9px 11px 9px;
   border-radius: 25px;
@@ -43,8 +42,37 @@ p {
   color: white;
   text-align: center;
 }
-.botao2 {
-  width: 30%;
+
+.botaooo{
+  border: 2px solid #493f3f;
+  border-radius: 15px;
   cursor: pointer;
-  vertical-align: center;
+  transition: 0.5s;
+  width: 35%;
+  padding: 0.5em 1em;
+  padding: 15px;   
+  width: 104%;
+}
+
+.divv{
+  text-align: center;
+}
+
+.formlist {
+  width: 400px;
+  background-color: rgb(30, 26, 26);
+  margin-top: 100px;
+  text-align: center;
+  padding: 18px 6% 60px 6%;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid rgba(147, 184, 189,0.8);
+  box-shadow: 9px 11px 9px;
+  border-radius: 25px;
+}
+
+.usuarios{
+  width: 415px;
+  height: 82px;
+  background-color: rgba(92, 14, 160, 0.686);
 }

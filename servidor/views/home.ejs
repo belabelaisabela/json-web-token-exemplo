@@ -8,12 +8,19 @@
   <title>Document</title>
 </head>
 <body>
+  <div class="divv">
+  <div class="formlist">
+    <h1>Usuários</h1>
   <% banco.forEach((usuario) => { %>
+    <div class="usuarios">
     <h1 class="listar"><%= usuario.nome %></h1>
     <p class="listar"><%= usuario.senha %></p>
+  </div>
   <% }) %><br/>
-  <form class="botao2" action="/deslogar" method="post">
-    <input class="botao2" type="submit" value="Deslogar">
+      <form action="/deslogar" method="post">
+    <input class="botaooo" type="submit" value="Deslogar">
   </form>
+</div>
+</div>
 </body>
 </html>

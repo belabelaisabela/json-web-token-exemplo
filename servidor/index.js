@@ -59,7 +59,7 @@ app.post('/logar', async (req, res) => {
   if(u) {
     const id = 1;
     const token = jwt.sign({ id }, process.env.SECRET, {
-      expiresIn: 300
+      expiresIn: 3000
     })
     res.cookie('token', token, {httpOnly:true});
     return res.json({
