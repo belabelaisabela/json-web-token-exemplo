@@ -1,6 +1,6 @@
 'use server'
 
-const url = "https://projetofinalmarcelino.vercel.app"
+const url = "https://projetofinalmarcelino.vercel.app";
 
 const getUserAuthenticated = async (user) => {
     const responseOfApi = await fetch(url + "/user/authenticated",
@@ -41,6 +41,24 @@ const getUsers = async() =>{
         return null
     }
 
+}
+
+const updateUser = async (user, id) => {
+    const token = cookies().get('token')?.value;
+    try{
+        const responseOfApi = await fetch(`${url}/user/${id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'Application/json',
+                Cookie: `token=${token}`
+            },
+            body: JSON.stringify(user)
+        });
+        const userSave = await responseOfApi.json();
+        return userSave;
+    } catch {
+        return null;
+    }
 }
 
 export { getUsers, getUserAuthenticated, postUser };

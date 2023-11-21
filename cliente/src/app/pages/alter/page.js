@@ -1,15 +1,35 @@
 'use client'
 import 'react-toastify/dist/ReactToastify.min.css';
 import Link from "next/link";
+import React, { useState } from "react";
+import { useRouter } from "next/navigation";
 import { ToastContainer, toast } from 'react-toastify';
 import styles from './style3.css'
 
 
 export default function Alter() {
-  const notify = (e) => {
+  const [user, setUser] = useState({
+    name: '', email: '', password: ''
+  });
+
+  const { push, refresh } = useRouter();
+
+  const handlerFormSubmit = async (e) => {
     e.preventDefault();
-    toast.success('Usuário alterado com sucesso!')
+    try {
+      await postUser(user);
+      push('/pages/dashboard');
+    } catch {
+      return toast.error('Error');
   }
+
+  const success = true;
+   if (success) {
+      toast.success('Usuário cadastrado com sucesso!');
+    } else {
+      toast.error('Ocorreu um erro ao cadastrar o usuário.');
+    }
+  };
  
     return (
     <body>
@@ -24,7 +44,7 @@ export default function Alter() {
     <div className="box-formulario">
     <div className="alter">
        
-      <form onSubmit={notify}>
+      <form onSubmit={handlerFormSubmit}>
       <h3>ALTERAR</h3>
       <hr></hr>
         <p>Name:</p>
@@ -42,7 +62,7 @@ export default function Alter() {
           placeholder='Password'
           type='password'>
         </input>
-        <button className="botao rotacao" onClick={notify}>Alter</button>
+        <button className="botao rotacao">Alter</button>
       </form>
       <ToastContainer />
       </div>
