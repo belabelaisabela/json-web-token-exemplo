@@ -41,7 +41,7 @@ app.use(
     secret: process.env.SECRET,
     algorithms: ["HS256"],
     getToken: req => req.cookies.token
-  }).unless({ path: ["/autenticar", "/logar", "/deslogar", "/usuarios/cadastrar"] })
+  }).unless({ path: ["/autenticar", "/user/authenticated", "/deslogar", "/usuarios/cadastrar"] })
 );
 
 app.get('/autenticar', async function(req, res){
@@ -69,23 +69,20 @@ app.post('/usuarios/cadastrar', async function(req, res){
 }
 })
 
-app.post('/logar', async (req, res) => {
-  const u = await usuario.findOne({ where: { nome: req.body.nome, senha: crypto.encrypt(req.body.senha) } });
+app.post('/user/authenticated', async (req, res) => {
+  const u = await usuario.findOne({ where: { nome: req.body.name, senha: crypto.encrypt(req.body.password) } });
   if(u) {
     const id = 1;
     const token = jwt.sign({ id }, process.env.SECRET, {
       expiresIn: 3000
     })
     res.cookie('token', token, {httpOnly:true}).json({
-      nome: u.nome,
+      name: u.name,
       token: token
     })
-    /*/return res.json({
-      usuario: req.body.usuario,
-      token: token
-    }) /*/
+    //return res.json(u)
   }
-   res.status(500).json({ mensagem: "Login Inválido "})
+   //res.status(500).json({ mensagem: "Login Inválido "})
 })
 
 app.post('/deslogar', function(req, res) {
@@ -105,6 +102,6 @@ app.get('/usuarios/listar', async function(req, res){
  }
  })
 
-app.listen(3000, function() {
-  console.log('App de Exemplo escutando na porta 3000!')
+app.listen(4000, function() {
+  console.log('App de Exemplo escutando na porta 4000!')
 });

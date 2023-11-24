@@ -8,7 +8,7 @@ import styles from './page.module.css'
 
 export default function Login() {
   const [user, setUser] = useState({
-    email: '',
+    name: '',
     password: '',
   });
   const { push, refresh } = useRouter();
@@ -38,8 +38,9 @@ export default function Login() {
         <p className={styles.p}>E-mail</p>
         <input className={styles.inpu}
           placeholder='E-mail'
-          type="email"
-          onChange={(e) => { setUser({ ...user, email: e.target.value }) }}>
+          name='name'
+          type="text"
+          onChange={(e) => { setUser({ ...user, name: e.target.value }) }}>
         </input>
         
         <p className={styles.p}>Senha</p>
