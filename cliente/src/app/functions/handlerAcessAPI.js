@@ -1,5 +1,7 @@
 'use server'
 
+import { cookies } from "next/dist/client/components/headers";
+
 const url = "http://localhost:4000";
 
 const getUserAuthenticated = async (user) => {
@@ -15,11 +17,12 @@ const getUserAuthenticated = async (user) => {
 }
 
 const postUser = async (user) => {
+    const token = cookies().get("token")?.value
     try{
         console.log(user)
-        const responseOfApi = await fetch(url + "/user", {
+        const responseOfApi = await fetch(url + "/usuarios/cadastrar", {
             method: 'POST',
-            headers: { 'Content-type': 'Application/json' },
+            headers: { 'Content-type': 'Application/json',  Cookie: `token=${token}` },
            body: JSON.stringify(user) 
         });
         const userSave = await responseOfApi.json();
@@ -31,9 +34,14 @@ const postUser = async (user) => {
 }
 
 const getUsers = async() =>{
+    const token = cookies().get("token")?.value
     try{
-        const responseOfApi = await fetch( url + "/users",{
-            next: { revalidate: 5}
+        const responseOfApi = await fetch( url + "/usuarios/listar",{
+            next: { revalidate: 5},
+            headers: { 'Content-type': 'Application/json',
+            Cookie: `token=${token}`,
+        },
+
         });
         const listUsers = responseOfApi.json()
         return listUsers;
@@ -43,22 +51,5 @@ const getUsers = async() =>{
 
 }
 
-const updateUser = async (user, id) => {
-    const token = cookies().get('token')?.value;
-    try{
-        const responseOfApi = await fetch(`${url}/user/${id}`, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'Application/json',
-                Cookie: `token=${token}`
-            },
-            body: JSON.stringify(user)
-        });
-        const userSave = await responseOfApi.json();
-        return userSave;
-    } catch {
-        return null;
-    }
-}
 
 export { getUsers, getUserAuthenticated, postUser };

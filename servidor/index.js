@@ -29,8 +29,6 @@ app.use(cors(corsOpcoes))
 
 app.set('view engine', 'ejs');
 
-app.use(cors());
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: true}));
 app.use(express.static('public'));
@@ -41,7 +39,7 @@ app.use(
     secret: process.env.SECRET,
     algorithms: ["HS256"],
     getToken: req => req.cookies.token
-  }).unless({ path: ["/autenticar", "/user/authenticated", "/deslogar", "/usuarios/cadastrar"] })
+  }).unless({ path: ["/autenticar", "/user/authenticated", "/deslogar", "/usuarios/cadastrar", "/usuarios/listar"] })
 );
 
 app.get('/autenticar', async function(req, res){
@@ -55,9 +53,11 @@ app.get('/usuarios/cadastrar', async function(req, res){
 
 app.post('/usuarios/cadastrar', async function(req, res){
   try {
+
+    
     const cript = {
       nome: req.body.name,
-      senha: crypto.encrypt(req.body.senha)
+      senha: crypto.encrypt(req.body.password)
     }
     if(req.body.senha == req.body.senhadois){
       const banco = await usuario.create(cript);
@@ -76,8 +76,8 @@ app.post('/user/authenticated', async (req, res) => {
     const token = jwt.sign({ id }, process.env.SECRET, {
       expiresIn: 3000
     })
-    res.cookie('token', token, {httpOnly:true}).json({
-      name: u.name,
+    return res.cookie('token', token, {httpOnly:true}).json({
+      name: u.nome,
       token: token
     })
     //return res.json(u)

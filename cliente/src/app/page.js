@@ -37,7 +37,7 @@ export default function Login() {
       <form onSubmit={handlerLogin}>
         <p className={styles.p}>E-mail</p>
         <input className={styles.inpu}
-          placeholder='E-mail'
+          placeholder='Nome'
           name='name'
           type="text"
           onChange={(e) => { setUser({ ...user, name: e.target.value }) }}>

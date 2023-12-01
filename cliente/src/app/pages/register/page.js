@@ -11,7 +11,7 @@ import styles from './style2.css'
 export default function Register() {
   
   const [user, setUser] = useState({
-    name: '', email: '', password: ''
+    name: '', password: '', newPassword: ''
   });
 
   const { push, refresh } = useRouter();
@@ -59,23 +59,26 @@ export default function Register() {
           }}
           required>
         </input>
-        <p>E-mail:</p>
-        <input className="inpu"
-          placeholder='E-mail'
-          type='email'
-          value={user.email}
-          onChange={(e) => {
-            setUser({ ...user, email: e.target.value });
-          }}
-          required>
-        </input>
+        
         <p>Password:</p>
         <input className="inpu"
           placeholder='Password'
           type='text'
+          name='password'
           value={user.password}
           onChange={(e) => {
             setUser({ ...user, password: e.target.value });
+          }}
+          required>
+        </input>
+        <p>Confirmar senha:</p>
+        <input className="inpu"
+          placeholder='Confirmar senha'
+          type='password'
+          name='newPassword'
+          value={user.newPassword}
+          onChange={(e) => {
+            setUser({ ...user, newPassword: e.target.value });
           }}
           required>
         </input>

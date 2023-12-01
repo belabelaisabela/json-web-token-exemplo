@@ -40,23 +40,14 @@ border-radius: 3px;
 
 .botao {  
   display: inline-block;  
-  -webkit-transition-duration: 0.3s;  
-  transition-duration: 0.3s;  
-  -webkit-transition-property: transform;  
-  transition-property: transform;  
-  -webkit-transform: translateZ(0);  
-  transform: translateZ(0);  
   box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-  
 }
+
 .botao:hover, .botao:focus, .botao:active {  
-  -webkit-transform: scale(1.2) rotate(-3deg);  
-  transform: scale(1.1) rotate(-3deg); 
   background:#535c6a; 
   transition:0.3s;
   box-shadow: 0px 6px 3px -1px rgba(0, 0, 0, 0.5);  
 } 
-
 
 .boxformulario {
   width: 100%;
